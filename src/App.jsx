@@ -6,7 +6,10 @@ import Compteur from './Compteur';
 import Bienvenue from './Bienvenue';
 import React, { useState } from 'react';
 import './App.css';
-
+import React from 'react';
+import { UserProvider } from './context/UserContext';
+import UserProfile from './components/UserProfile';
+import Notifications from './components/Notifications';
 function TodoApp() {
   const [todos, setTodos] = useState([]);
   const [task, setTask] = useState("");
@@ -51,12 +54,15 @@ function TodoApp() {
   );
 }
 function App() {
-  return (
-    <div>
-       <Bienvenue nom="Saleh" />
-       <Compteur />
-       <TodoApp />;
-    </div>
+   return (
+    <UserProvider>
+      <div style={{ fontFamily: 'Arial', padding: 20 }}>
+        <h1>🌐 Mon Application React - TP Hooks</h1>
+        <UserProfile />
+        <Notifications />
+        <NotificationCounter />
+      </div>
+    </UserProvider>
   );
 }
 
